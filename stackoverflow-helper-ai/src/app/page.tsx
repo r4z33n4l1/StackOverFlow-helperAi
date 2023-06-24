@@ -1,7 +1,18 @@
-import Image from 'next/image'
+'use client'
+import { useEffect, useState } from 'react';
+import aiFetch from './utils/api';
 
 export default function Home() {
-  return (
-    <h1> Hello </h1>
-  )
+  const [response, setResponse] = useState('');
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const apiResponse = await aiFetch('Hello bestie!');
+      setResponse(apiResponse);
+    };
+
+    fetchData();
+  }, []);
+
+  return <h1>{response}</h1>;
 }

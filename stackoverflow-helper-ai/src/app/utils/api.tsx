@@ -6,10 +6,18 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-const defaultPrompt = { role: 'system', content: 'You are a stackoverflow analyzer. Provide a link and a question, and I will find the most accurate answer based on the contents of the link.' }
+const defaultPrompt = { role: 'system', content: 'Just say hello' }
 
-export default function AiFetch({ prompt = defaultPrompt, response }) {
 
-    return response
-
-}
+export default async function aiFetch(prompt: string) {
+    const messages = [defaultPrompt, { role: 'user', content: prompt }];
+  
+    const completion = await openai.createChatCompletion({
+      model: 'gpt-3.5-turbo',
+      messages,
+    });
+  
+    const response = completion.data.choices[0].message.content;
+    console.log(response);
+    return response;
+  }
