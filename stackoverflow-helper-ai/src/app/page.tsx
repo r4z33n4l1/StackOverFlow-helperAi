@@ -1,11 +1,13 @@
 'use client'
 import { useState } from 'react';
 import aiFetch from './utils/api';
+import { linkValid, linkFetch } from './utils/linktools';
 
 export default function Home() {
 
   const [link, setLink] = useState('');
   const [question, setQuestion] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleClick = async () => {
     const response = await aiFetch('Hello bestie!');
