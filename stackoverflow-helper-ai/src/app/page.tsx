@@ -1,32 +1,38 @@
 'use client'
+
+// appropriate imports
 import { useState } from 'react';
 import aiFetch from './utils/api';
 import { linkValid, linkFetch } from './utils/linktools';
 
 export default function Home() {
+
+  // declare variables as required
   const [link, setLink] = useState('');
   const [question, setQuestion] = useState('');
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState('');
 
-
+  // function which takes care of submission 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    
+    // see if link is valid
     if (!linkValid(link)) {
       alert('Invalid link');
       return;
     }
+    
+    // enter loading state
     setResponse('');
     setLoading(true);
+
+    //parse link and send prompt to ai and get it back
     const bodyContent = await linkFetch(link);
-
-
     const usePrompt = `My question is ${question}. Give me the answer from: ${bodyContent}`.replace(/ {2,}/g, '');
-    // console.log(usePrompt);
-
     const aiResponse = await aiFetch(usePrompt);
+
+    // exit loading state and set response
     setLoading(false);
     setResponse(aiResponse);
   };
