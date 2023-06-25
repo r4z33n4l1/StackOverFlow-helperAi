@@ -11,16 +11,17 @@ const defaultPrompt = { role: 'system', content: 'You are an amazing stackoverfl
 
 export default async function aiFetch(prompt: string) {
     
-  console.log(prompt);
+    console.log(prompt);
 
     const messages = [defaultPrompt, { role: 'user', content: prompt }];
 
     const completion = await openai.createChatCompletion({
       model: 'gpt-3.5-turbo',
       messages,
+
     });
   
-    const response = completion.data.choices[0].message.content;
+    const response = completion?.data.choices[0].message.content || 'No Response';
     console.log(response);
     return response;
   }

@@ -26,7 +26,7 @@ export default function Home() {
     const bodyContent = await linkFetch(link);
     setLoading(false);
 
-    const usePrompt = `My question is ${question}. Give me the answer from: ${bodyContent}`;
+    const usePrompt = `My question is ${question}. Give me the answer from: ${bodyContent}`.replace(/ {2,}/g, '');
     console.log(usePrompt);
     const aiResponse = await aiFetch(usePrompt);
     setResponse(aiResponse);

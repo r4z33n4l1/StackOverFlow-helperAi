@@ -8,13 +8,13 @@ export function linkValid(link: string): boolean {
   
 
 export async function linkFetch(url: string) {
-    
+
     const response = await fetch(url);
     const htmlText = await response.text();
 
     const parser = new DOMParser();
     const doc = parser.parseFromString(htmlText, 'text/html');
-    const contentElement = doc.querySelector('#content');
+    const contentElement = doc.querySelector('#answers');
 
     let bodyContent = '';
     if (contentElement) {
