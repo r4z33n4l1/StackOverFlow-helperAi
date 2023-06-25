@@ -8,18 +8,13 @@ export default function Home() {
   const [question, setQuestion] = useState('');
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState('');
-  const [prompt, setPrompt] = useState('');
 
-  const handleClick = async () => {
-    const aiResponse = await aiFetch('Hello bestie!');
-    console.log(aiResponse);
-  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!linkValid(link)) {
-      console.log('Invalid link');
+      alert('Invalid link');
       return;
     }
 
@@ -28,25 +23,24 @@ export default function Home() {
     setLoading(false);
 
     const usePrompt = `My question is ${question}. Give me the answer from: ${bodyContent}`.replace(/ {2,}/g, '');
-    console.log(usePrompt);
-    setPrompt(usePrompt);
+    // console.log(usePrompt);
 
     const aiResponse = await aiFetch(usePrompt);
     setResponse(aiResponse);
   };
 
-  return (
-    <div>
-      <h1>Hello guys! This is the start!</h1>
-      <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Link" value={link} onChange={(e) => setLink(e.target.value)} />
-        <br />
-        <input type="text" placeholder="Question" value={question} onChange={(e) => setQuestion(e.target.value)} />
-        <button type="submit">Submit</button>
-      </form>
-      {loading && <p>Loading...</p>}
-      {prompt && <p>Prompt: {prompt}</p>}
-      {response && <p>Response: {response}</p>}
-    </div>
-  );
+return (
+  <div className="container">
+    <h1 className="title">Stackoverflow Helper AI</h1>
+    <form className="form" onSubmit={handleSubmit}>
+      <input type="text" className="form-input" placeholder="Link" value={link} onChange={(e) => setLink(e.target.value)} />
+      <br />
+      <input type="text" className="form-input" placeholder="Question" value={question} onChange={(e) => setQuestion(e.target.value)} />
+      <button type="submit" className="form-button">Submit</button>
+    </form>
+    {loading && <p className="loading">Loading...</p>}
+    {response && <p className="response">{response}</p>}
+  </div>
+);
+
 }

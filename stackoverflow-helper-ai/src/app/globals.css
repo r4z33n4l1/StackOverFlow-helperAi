@@ -5,3 +5,40 @@
 text {
   color: black
 }
+
+
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.form {
+  margin-bottom: 20px;
+}
+
+.form input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+.form button {
+  padding: 8px 16px;
+}
+
+.loading {
+  font-style: italic;
+}
+
+.response {
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
