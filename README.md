@@ -4,10 +4,12 @@ This project is a simple web-app which uses AI to help developers quickly find a
 
 ## How to run
 1) Clone the repo
-2) Install the requirements ```npm i```
-3) Run the server ```npm run dev```
-4) Open the web-app in your browser ```http://localhost:3000```
-5) Enjoy, hope it helps you!
+2) cd into the folder
+3) Install the requirements ```npm i```
+4) create a .env file and add your api key under ```NEXT_PUBLIC_OPENAI_API_KEY```
+5) Run the server ```npm run dev```
+6) Open the web-app in your browser ```http://localhost:3000```
+7) Enjoy, hope it helps you!
 
 ## Usage 
 1) Enter your question and link to the stackoverflow post (make sure it starts with ```https://stackoverflow.com/questions/```)
