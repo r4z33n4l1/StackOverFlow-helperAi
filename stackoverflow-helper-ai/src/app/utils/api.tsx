@@ -6,7 +6,7 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-const defaultPrompt = { role: 'system', content: 'You are an amazing stackoverflow answerer, you shall analyze the prompt from the user and give a summary of their question based on the body of the text' }
+const defaultPrompt = { role: 'system', content: 'You are an amazing stackoverflow answerer, you shall analyze the prompt from the user and answer their question appropriately from the prompt, as well as your past knowledge. The answer may involve code so return code if necessary in markdown. if the user asks a how to question you will give the appropriate code in the appropriate language.' }
 
 
 export default async function aiFetch(prompt: string) {

@@ -13,19 +13,21 @@ export default function Home() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    
     if (!linkValid(link)) {
       alert('Invalid link');
       return;
     }
-
+    setResponse('');
     setLoading(true);
     const bodyContent = await linkFetch(link);
-    setLoading(false);
+
 
     const usePrompt = `My question is ${question}. Give me the answer from: ${bodyContent}`.replace(/ {2,}/g, '');
     // console.log(usePrompt);
 
     const aiResponse = await aiFetch(usePrompt);
+    setLoading(false);
     setResponse(aiResponse);
   };
 
