@@ -36,3 +36,4 @@ As it was an impromptu project and I only set myself around 1-2 hours to make it
 5) I wanted to add a crawler / auto - searcher function but didnt have time
     a) This would be where you just give the question, the AI will create appropriate search terms and search stack overflow, and feed it's response back to itself
         and give a final proper answer
+6) Wanted to definitely add more better TypeScript types, with error handlers, to make the code more robust, but did not have time to implement it, as a lot of time was spent on debugging the errors with parsing and fetching data.
