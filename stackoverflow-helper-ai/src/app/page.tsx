@@ -8,10 +8,11 @@ export default function Home() {
   const [question, setQuestion] = useState('');
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState('');
+  const [prompt, setPrompt] = useState('');
 
   const handleClick = async () => {
-    const response = await aiFetch('Hello bestie!');
-    console.log(response);
+    const aiResponse = await aiFetch('Hello bestie!');
+    console.log(aiResponse);
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -28,6 +29,8 @@ export default function Home() {
 
     const usePrompt = `My question is ${question}. Give me the answer from: ${bodyContent}`.replace(/ {2,}/g, '');
     console.log(usePrompt);
+    setPrompt(usePrompt);
+
     const aiResponse = await aiFetch(usePrompt);
     setResponse(aiResponse);
   };
@@ -42,7 +45,8 @@ export default function Home() {
         <button type="submit">Submit</button>
       </form>
       {loading && <p>Loading...</p>}
-      {response && <p>{response}</p>}
+      {prompt && <p>Prompt: {prompt}</p>}
+      {response && <p>Response: {response}</p>}
     </div>
   );
 }

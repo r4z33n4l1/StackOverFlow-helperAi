@@ -7,8 +7,7 @@ export function linkValid(link: string): boolean {
   }
   
 
-export async function linkFetch(url: string) {
-
+  export async function linkFetch(url: string) {
     const response = await fetch(url);
     const htmlText = await response.text();
 
@@ -18,10 +17,12 @@ export async function linkFetch(url: string) {
 
     let bodyContent = '';
     if (contentElement) {
-        bodyContent = contentElement.textContent?.replace(/ {2,}/g, '') || '';
+        const answerElements = contentElement.querySelectorAll('.js-post-body');
+        answerElements.forEach((answerElement) => {
+            bodyContent += answerElement.textContent?.replace(/ {2,}/g, '') || '';
+        });
     }
 
     console.log(bodyContent);
     return bodyContent;
-
-    }
+}
